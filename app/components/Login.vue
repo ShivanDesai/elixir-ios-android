@@ -113,6 +113,7 @@ export default {
                 var result = response.content.toJSON();
                 if(result.status){
                     appSettings.setString("token", result.token);
+                    appSettings.setBoolean("loggedin", true);
                     this.$navigateTo(Home);
                 }
                 //TODO if successfully logged in, $navigateTo(Home)

@@ -34,6 +34,10 @@
                         <Label col="0" text.decode="&#xf013;" class="fa"></Label>
                         <Label col="1" text="Settings" class="p-r-10"></Label>
                     </GridLayout>
+                    <!-- <GridLayout v-if="isLoggedIn" columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Login' ? ' selected': '')" @tap="onNavigationItemTap(Logout)">
+                        <Label col="0" text.decode="&#xf013;" class="fa"></Label>
+                        <Label col="1" text="Logout" class="p-r-10"></Label>
+                    </GridLayout> -->
                     <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Login' ? ' selected': '')" @tap="onNavigationItemTap(Login)">
                         <Label col="0" text.decode="&#xf013;" class="fa"></Label>
                         <Label col="1" text="Login" class="p-r-10"></Label>
@@ -52,11 +56,15 @@
     import * as utils from "~/shared/utils";
     import SelectedPageService from "~/shared/selected-page-service";    
     import Login from './Login';
+    import Logout from './Logout';
+    const appSettings = require("tns-core-modules/application-settings");
     
     export default {
         mounted() {
             SelectedPageService.getInstance().selectedPage$
                 .subscribe((selectedPage) => this.selectedPage = selectedPage);
+            // this.isLoggedIn = appSettings.getBoolean("loggedin", false);
+            console.log("======++++++++++==++=+====isloggedin: " + this.isLoggedIn);
         },
         data () {
             return {
@@ -66,7 +74,9 @@
                 Search: Search,
                 Settings: Settings,
                 Login: Login,
-                selectedPage: ""
+                Logout: Logout,
+                selectedPage: "",
+                isLoggedIn: appSettings.getBoolean("loggedin", false)
             };
         },
         components: {

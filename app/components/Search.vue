@@ -50,7 +50,7 @@
         data () {
             return { 
                         allEvents: [],
-                        locas: [[37,-121],[40,-122]]
+                        allRequests: []
                     };
         },
         methods: {
@@ -63,10 +63,10 @@
                     console.log(this.allEvents[0].location + "=================="+this.allEvents[1].location+"============================");
                     console.log(this.allEvents[i].location + "========================"+this.allEvents[i].event_name+"======================");
                     var loc = this.allEvents[i].location.split(",");
-                    // var x = loc[0];
-                    // var y = loc[1].replace(/\s+/g, '');
-                    var x = this.locas[i][0];
-                    var y = this.locas[i][1];
+                    var x = loc[0];
+                    var y = loc[1].replace(/\s+/g, '');
+                    // var x = this.locas[i][0];
+                    // var y = this.locas[i][1];
                     var title = this.allEvents[i].event_name;
                     var subt = this.allEvents[i].date;
                     
@@ -76,10 +76,41 @@
                             lng: parseFloat(y),
                             title: title,
                             subtitle: subt,
-                            iconPath: '../images/redMarker.png',
+                            iconPath: 'images/redMarker.png',
                             onCalloutTap: () => {
                                 // utils.openUrl("https://www.thepolyglotdeveloper.com");
                                 if(confirm("Do you want to accept the request?")){
+                                    // do something about accepting the request
+                                    this.alert("YOu have confirmed the request");
+                                }
+                            }
+                        }
+                    ]);
+                }
+                console.log("====+++++++++" + this.allRequests.length + "++++======")
+                for(i = 0; i < this.allRequests.length; i++){
+                    // console.log(this.allRequests[0].location + "=================="+this.allEvents[1].location+"============================");
+                    // console.log(this.allEvents[i].location + "========================"+this.allEvents[i].event_name+"======================");
+                    // var loc = this.allRequests[i].location.split(",");
+                    ;
+                    var x = this.allRequests[i].latitude;
+                    var y = this.allRequests[i].longitudes;
+                    // var x = this.locas[i][0];
+                    // var y = this.locas[i][1];
+                    var title = this.allRequests[i].location;
+                    var subt = this.allRequests[i].fulfilled_quantity;
+                    
+                    args.map.addMarkers([
+                        {
+                            lat: parseFloat(x),
+                            lng: parseFloat(y),
+                            title: title,
+                            subtitle: subt.toString(),
+                            iconPath: 'images/greenMarker.png',
+                            onCalloutTap: () => {
+                                // utils.openUrl("https://www.thepolyglotdeveloper.com");
+                                if(confirm("Do you want to accept the request?")){
+                                    // do something about accepting the request
                                     this.alert("YOu have confirmed the request");
                                 }
                             }
@@ -115,6 +146,14 @@
                 headers: { "Content-Type": "application/json" },
             }).then(response => {
                 this.allEvents = response.content.toJSON();
+            }, error => {
+                console.error(error);
+            });
+            http.request({
+                url: "http://ec2-3-132-175-165.us-east-2.compute.amazonaws.com/requests/all",
+                method: "GET",
+            }).then(response => {
+                this.allRequests = response.content.toJSON();
             }, error => {
                 console.error(error);
             });
