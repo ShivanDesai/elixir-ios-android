@@ -69,8 +69,8 @@
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     content: JSON.stringify({
-                        blood_group: this.selectedBG,
-                        blood_quantity: this.selectedAmount,
+                        blood_group: this.bloodGroupList[this.selectedBG],
+                        blood_quantity: this.bloodAmount[this.selectedAmount],
                         location: "San Jose, CA",
                         latitude: this.lat,
                         longitudes: this.long,
