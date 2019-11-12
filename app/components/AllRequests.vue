@@ -20,7 +20,7 @@
         </ActionBar>
 
         <GridLayout>
-            <ListView v-show="isDonationsSet" for="item in donations" class="list" separatorColor="transparent">
+            <ListView v-show="isDonationsSet" for="item in donations" class="list" separatorColor="transparent" @itemTap="onItemTap">
                 <v-template>
                     <GridLayout class="listRows" rows="auto,auto,auto" cols="auto,auto">
                         <Label :text="item.location" row="0" class="heading"/>
@@ -39,6 +39,7 @@
     import SelectedPageService from "../shared/selected-page-service";
     import * as http from 'http';
     const appSettings = require("tns-core-modules/application-settings");
+    import Request from './Request';
 
     export default {
         data(){
@@ -83,6 +84,14 @@
                     title: "ELIXIR",
                     okButtonText: "OK",
                     message: message
+                });
+            },
+            onItemTap(event){
+                // console.log(this.searchResults[event.index].center[0]);
+                this.$navigateTo(Request, {
+                    props: {
+                        oneRequest: this.donations[event.index]
+                    }
                 });
             }
         }

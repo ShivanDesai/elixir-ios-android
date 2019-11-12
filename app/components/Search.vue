@@ -140,12 +140,9 @@
                                         else{
                                             this.alert("The request was already accepted by someone else");
                                         }
-                                        //TODO if successfully logged in, $navigateTo(Home)
-
                                     }, error => {
                                         console.error(error);
                                     });
-                                    this.alert("YOu have confirmed the request");
                                 }
                             }
                         }
