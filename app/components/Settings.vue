@@ -33,11 +33,12 @@
     import * as utils from "~/shared/utils";
     import SelectedPageService from "../shared/selected-page-service";
     import AllDonations from './AllDonations';
+    import AllRequests from './AllRequests';
 
     export default {
         data(){
             return{
-                options: ["All Donations"]
+                options: ["Your Donations", "Your Requests"]
             }
         },
         mounted() {
@@ -55,6 +56,9 @@
             onItemTap(event){
                 if(event.index == 0){
                     this.$navigateTo(AllDonations);
+                }
+                else if(event.index == 1){
+                    this.$navigateTo(AllRequests);
                 }
             }
         }

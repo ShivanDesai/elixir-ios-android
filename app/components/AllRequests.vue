@@ -16,16 +16,16 @@
                 @tap="onDrawerButtonTap"
                 ios.position="left">
             </ActionItem>
-            <Label class="action-bar-title" text="Your Donations"></Label>
+            <Label class="action-bar-title" text="Your Requests"></Label>
         </ActionBar>
 
         <GridLayout>
             <ListView v-show="isDonationsSet" for="item in donations" class="list">
                 <v-template>
                     <GridLayout class="listRows" rows="auto,auto,auto" cols="auto,auto">
-                        <Label :text="item.donation_address" row="0" class="heading"/>
-                        <Label :text="'Donated: ' + item.blood_qty + ' units'" row="1" col="0"/>
-                        <Label :text="new Date(item.donation_date.split(' ')[0]).toString()" row="2" col="0" class="date"/>
+                        <Label :text="item.location" row="0" class="heading"/>
+                        <Label :text="'Requested: ' + item.blood_quantity + ' units'" row="1" col="0"/>
+                        <Label :text="item.requested_date" row="2" col="0" class="date"/>
                     </GridLayout>
                 </v-template>
             </ListView>
@@ -51,15 +51,15 @@
             SelectedPageService.getInstance().updateSelectedPage("Browse");
             console.log("in ALLDONATIONSMOUNTED======+++=++==+==+=+====");
             http.request({
-                url: "http://ec2-3-132-175-165.us-east-2.compute.amazonaws.com/donation/user/" + appSettings.getString("token"),
-                method: "GET",
-                headers: { "Content-Type": "application/json" }
+                url: "http://ec2-3-132-175-165.us-east-2.compute.amazonaws.com/requests/user/" + appSettings.getString("token"),
+                method: "GET"
+                // headers: { "Content-Type": "application/json" }
             }).then(response => {
                 var result = response.content.toJSON();
                 console.log("IN DONATION============setting result======");
                 if(result.status){
                     console.log("IN DONATION============setting donation======");
-                    this.donations = result.blood_donations;
+                    this.donations = result.requests;
                     this.isDonationsSet = true;
                 }
                 else{
