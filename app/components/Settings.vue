@@ -20,7 +20,7 @@
         </ActionBar>
 
         <GridLayout class="page-content">
-            <ListView for="item in options" @itemTap="onItemTap" >
+            <ListView for="item in options" @itemTap="onItemTap" class="list" separatorColor="transparent">
                 <v-template>
                     <GridLayout class="listItem">
                     <Label :text="item"/>
@@ -73,8 +73,22 @@
     // End custom common variables
     .listItem{
         padding: 30px;
+        width: 90%;
         font-size: 20em;
         margin: 20px;
+        color: black;
+        text-align: center;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #ea3b3a;
+        border-radius: 30px;
+        background-color: #f87979;
+        font-weight: bold;
+        height: 170px;
     }
+    .list{
+  background-color: white;
+  margin-top: 50px;
+}
     // Custom styles
 </style>

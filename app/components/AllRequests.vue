@@ -20,7 +20,7 @@
         </ActionBar>
 
         <GridLayout>
-            <ListView v-show="isDonationsSet" for="item in donations" class="list">
+            <ListView v-show="isDonationsSet" for="item in donations" class="list" separatorColor="transparent">
                 <v-template>
                     <GridLayout class="listRows" rows="auto,auto,auto" cols="auto,auto">
                         <Label :text="item.location" row="0" class="heading"/>
@@ -94,17 +94,24 @@
     @import '../app-variables';
     // End custom common variables
     .list{
-        background-color: white;
+        background-color: #FFFFFF;
         height: auto;
     }
     .listRows{
-        height: 250px;
-        color: red;
-        // text-align: center;
-        margin: 20px;
+        padding: 10px;
+        width: 90%;
+        margin: 30px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #ea3b3a;
+        border-radius: 30px;
+        height: 300px;
+        color: black;
+        text-align: center;
     }
     .heading{
-        font-size: 40em;
+        font-size: 30em;
+        color: red;
     }
     .date{
         // text-align: right;

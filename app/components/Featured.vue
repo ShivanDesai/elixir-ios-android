@@ -20,12 +20,12 @@
         </ActionBar>
 
         <GridLayout class="page-content" rows="auto,*">
-            <SearchBar row="0" hint="Enter where you want the donor to donate" v-model="searchPhrase" @submit="onSubmit" />
-            <ListView v-show="locationSet" row="1" for="item in searchResults" @itemTap="onItemTap">
+            <SearchBar row="0" hint="Enter where you want the donor to donate" v-model="searchPhrase" @submit="onSubmit" class="search"/>
+            <ListView separatorColor="transparent" v-show="locationSet" row="1" for="item in searchResults" @itemTap="onItemTap" class="list">
                 <v-template>
                     <GridLayout class="listRows" rows="auto,auto">
-                    <Label :text="item.text" row="0" class="heading"/>
-                    <Label :text="item.place_name" row="1"/>
+                        <Label :text="item.text" row="0" class="heading"/>
+                        <Label textWrap="true" :text="item.place_name" row="1" class="address"/>
                     </GridLayout>
                 </v-template>
             </ListView>
@@ -134,14 +134,31 @@
 
 <style scoped lang="scss">
     // Start custom common variables
+    @import '../app-variables';
     // End custom common variables
     .listRows{
+        padding: 10px;
+        width: 90%;
         margin: 30px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #ea3b3a;
+        border-radius: 30px;
     }
-
+    .list{
+        background-color: white;
+    }
+    .search{
+        background-color: white;
+        color: #ea3b3a;
+    }
     .heading{
+        font-size: 20em;
         font-weight: bold;
-        color: red;
+        color: #ea3b3a;
+    }
+    .address{
+        color: black;
     }
     // Custom styles
 </style>
