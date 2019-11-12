@@ -101,7 +101,7 @@
                     // var x = this.locas[i][0];
                     // var y = this.locas[i][1];
                     var title = this.allRequests[i].location;
-                    var subt = this.allRequests[i].fulfilled_quantity;
+                    var subt = this.allRequests[i].blood_group + ' - ' + this.allRequests[i].fulfilled_quantity;
                     var bg = this.allRequests[i].blood_group;
                     var bq = this.allRequests[i].blood_quantity;
                     var rid = this.allRequests[i].id;
@@ -110,7 +110,7 @@
                             lat: parseFloat(x),
                             lng: parseFloat(y),
                             title: title,
-                            subtitle: subt.toString(),
+                            subtitle: subt,
                             iconPath: 'images/greenMarker.png',
                             onCalloutTap: () => {
                                 // utils.openUrl("https://www.thepolyglotdeveloper.com");
