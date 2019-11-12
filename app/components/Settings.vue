@@ -20,8 +20,11 @@
         </ActionBar>
 
         <GridLayout class="page-content">
-            <Label class="page-icon fa" text.decode="&#xf013;"></Label>
-            <Label class="page-placeholder" :text="message"></Label>
+            <ListView for="item in options" @itemTap="onItemTap">
+                <v-template>
+                    <Label :text="item"/>
+                </v-template>
+            </ListView>
         </GridLayout>
     </Page>
 </template>
@@ -29,8 +32,14 @@
 <script>
     import * as utils from "~/shared/utils";
     import SelectedPageService from "../shared/selected-page-service";
+    import AllDonations from './AllDonations';
 
     export default {
+        data(){
+            return{
+                options: ["All Donations"]
+            }
+        },
         mounted() {
             SelectedPageService.getInstance().updateSelectedPage("Settings");
         },
@@ -42,6 +51,11 @@
         methods: {
             onDrawerButtonTap() {
                 utils.showDrawer();
+            },
+            onItemTap(event){
+                if(event.index == 0){
+                    this.$navigateTo(AllDonations);
+                }
             }
         }
     };
