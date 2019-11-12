@@ -45,6 +45,7 @@
     import * as utils from "utils/utils";
     import SelectedPageService from "../shared/selected-page-service";
     import * as http from 'http';
+    const appSettings = require("tns-core-modules/application-settings");
 
     export default {
         data () {
@@ -111,6 +112,35 @@
                                 // utils.openUrl("https://www.thepolyglotdeveloper.com");
                                 if(confirm("Do you want to accept the request?")){
                                     // do something about accepting the request
+                                    http.request({
+                                        url: "http://ec2-3-132-175-165.us-east-2.compute.amazonaws.com/donation/create",
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        content: JSON.stringify({
+                                            blood_group: this.allRequests[i].blood_group, 
+                                            blood_qty: this.allRequests[i].blood_quantity,
+                                            user_id: appSettings.getString("token", "dasdasd"),
+                                            donation_date: new Date(),
+                                            gender: 'M',
+                                            age: '20',
+                                            donation_address: 'some addr',
+                                            longitude: this.allRequests[i].longitudes,
+                                            latitude: this.allRequests[i].latitude,
+                                            request_id: this.allRequests[i].id
+                                        })
+                                    }).then(response => {
+                                        var result = response.content.toJSON();
+                                        if(result.status){
+                                            this.alert("You've successfully accepted the donation request");
+                                        }
+                                        else{
+                                            this.alert("The request was already accepted by someone else");
+                                        }
+                                        //TODO if successfully logged in, $navigateTo(Home)
+
+                                    }, error => {
+                                        console.error(error);
+                                    });
                                     this.alert("YOu have confirmed the request");
                                 }
                             }
@@ -130,12 +160,12 @@
                 // ]);
             },
             alert(message) {
-            return alert({
-                title: "ELIXIR",
-                okButtonText: "OK",
-                message: message
-            });
-        }
+                return alert({
+                    title: "ELIXIR",
+                    okButtonText: "OK",
+                    message: message
+                });
+            }
             
         },
         mounted() {
