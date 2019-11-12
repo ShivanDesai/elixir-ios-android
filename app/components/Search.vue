@@ -22,7 +22,7 @@
         <GridLayout class="page-content">
             <!-- <Label class="page-icon fa" text.decode="&#xf002;"></Label>
             <Label class="page-placeholder" :text="message"></Label> -->
-            <Mapbox
+            <Mapbox v-if="isEventsSet && isRequestsSet"
                     accessToken="pk.eyJ1Ijoic2hpdmFuZGVzYWkiLCJhIjoiY2syaW0xaXllMGcydTNjb2hua3UzbHpyMSJ9.ZHxE6FAsU4GeDvz4WH9AhA"
                     mapStyle="traffic_day"
                     latitude="37.7397"
@@ -51,7 +51,9 @@
         data () {
             return { 
                         allEvents: [],
-                        allRequests: []
+                        allRequests: [],
+                        isEventsSet: false,
+                        isRequestsSet: false
                     };
         },
         methods: {
@@ -178,6 +180,7 @@
                 headers: { "Content-Type": "application/json" },
             }).then(response => {
                 this.allEvents = response.content.toJSON();
+                this.isEventsSet = true;
             }, error => {
                 console.error(error);
             });
@@ -186,6 +189,7 @@
                 method: "GET",
             }).then(response => {
                 this.allRequests = response.content.toJSON();
+                this.isRequestsSet = true;
             }, error => {
                 console.error(error);
             });

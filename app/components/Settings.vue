@@ -20,9 +20,11 @@
         </ActionBar>
 
         <GridLayout class="page-content">
-            <ListView for="item in options" @itemTap="onItemTap">
+            <ListView for="item in options" @itemTap="onItemTap" >
                 <v-template>
+                    <GridLayout class="listItem">
                     <Label :text="item"/>
+                    </GridLayout>
                 </v-template>
             </ListView>
         </GridLayout>
@@ -69,6 +71,10 @@
     // Start custom common variables
     @import '../app-variables';
     // End custom common variables
-
+    .listItem{
+        padding: 30px;
+        font-size: 20em;
+        margin: 20px;
+    }
     // Custom styles
 </style>
