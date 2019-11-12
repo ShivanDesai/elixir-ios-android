@@ -120,7 +120,7 @@
                                         headers: { "Content-Type": "application/json" },
                                         content: JSON.stringify({
                                             blood_group: bg, 
-                                            blood_qty: bc,
+                                            blood_qty: bq,
                                             user_id: appSettings.getString("token", "dasdasd"),
                                             donation_date: new Date(),
                                             gender: 'M',
