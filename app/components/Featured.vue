@@ -91,7 +91,8 @@
                 this.$navigateTo(RequestBlood, {
                     props: {
                         long: this.searchResults[event.index].center[0],
-                        lat: this.searchResults[event.index].center[1]
+                        lat: this.searchResults[event.index].center[1],
+                        text: this.searchResults[event.index].text
                     }
                 });
             },

@@ -41,7 +41,7 @@
     import Home from './Home';
 
     export default {
-        props: ['long', 'lat'],
+        props: ['long', 'lat', 'text'],
         data(){
             return{
                 bloodGroupList: ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"],
@@ -71,7 +71,7 @@
                     content: JSON.stringify({
                         blood_group: this.bloodGroupList[this.selectedBG],
                         blood_quantity: this.bloodAmount[this.selectedAmount],
-                        location: "San Jose, CA",
+                        location: this.text,
                         latitude: this.lat,
                         longitudes: this.long,
                         user_id: appSettings.getString("token")
