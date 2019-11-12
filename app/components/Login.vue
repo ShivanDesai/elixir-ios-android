@@ -78,7 +78,7 @@ export default {
         },
 
         submit() {
-            this.$navigateTo(Home);
+            // this.$navigateTo(Home);
             if (!this.user.email || !this.user.password) {
                 this.alert(
                     "Please provide both an email address and password."
