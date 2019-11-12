@@ -13,35 +13,35 @@
                         <Label col="1" text="Home" class="p-r-10"></Label>
                     </GridLayout>
 
-                    <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Browse' ? ' selected': '')" @tap="onNavigationItemTap(Browse)">
+                    <!-- <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Browse' ? ' selected': '')" @tap="onNavigationItemTap(Browse)">
                         <Label col="0" text.decode="&#xf1ea;" class="fa"></Label>
                         <Label col="1" text="Browse" class="p-r-10"></Label>
-                    </GridLayout>
+                    </GridLayout> -->
 
                     <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Search' ? ' selected': '')" @tap="onNavigationItemTap(Search)">
                         <Label col="0" text.decode="&#xf002;" class="fa"></Label>
                         <Label col="1" text="Search" class="p-r-10"></Label>
                     </GridLayout>
 
-                    <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Featured' ? ' selected': '')" @tap="onNavigationItemTap(Featured)">
+                    <!-- <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Featured' ? ' selected': '')" @tap="onNavigationItemTap(Featured)">
                         <Label col="0" text.decode="&#xf005;" class="fa"></Label>
                         <Label col="1" text="Featured" class="p-r-10"></Label>
-                    </GridLayout>
+                    </GridLayout> -->
         
                     <StackLayout class="hr-light"></StackLayout>
 
                     <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Settings' ? ' selected': '')" @tap="onNavigationItemTap(Settings)">
                         <Label col="0" text.decode="&#xf013;" class="fa"></Label>
-                        <Label col="1" text="Settings" class="p-r-10"></Label>
+                        <Label col="1" text="Profile" class="p-r-10"></Label>
                     </GridLayout>
                     <!-- <GridLayout v-if="isLoggedIn" columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Login' ? ' selected': '')" @tap="onNavigationItemTap(Logout)">
                         <Label col="0" text.decode="&#xf013;" class="fa"></Label>
                         <Label col="1" text="Logout" class="p-r-10"></Label>
                     </GridLayout> -->
-                    <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Login' ? ' selected': '')" @tap="onNavigationItemTap(Login)">
+                    <!-- <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Login' ? ' selected': '')" @tap="onNavigationItemTap(Login)">
                         <Label col="0" text.decode="&#xf013;" class="fa"></Label>
                         <Label col="1" text="Login" class="p-r-10"></Label>
-                    </GridLayout>
+                    </GridLayout> -->
                 </StackLayout>
             </ScrollView>
         </GridLayout>

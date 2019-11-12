@@ -16,7 +16,7 @@
                 @tap="onDrawerButtonTap"
                 ios.position="left">
             </ActionItem>
-            <Label class="action-bar-title" text="Featured"></Label>
+            <Label class="action-bar-title" text="Add Request"></Label>
         </ActionBar>
 
         <GridLayout class="page-content" rows="auto,*">
