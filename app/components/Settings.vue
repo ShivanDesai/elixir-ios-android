@@ -19,14 +19,16 @@
             <Label class="action-bar-title" text="Settings"></Label>
         </ActionBar>
 
-        <GridLayout class="page-content">
-            <ListView for="item in options" @itemTap="onItemTap" class="list" separatorColor="transparent">
+        <GridLayout class="page-content" rows="auto,auto">
+            <Button text="Your Donations" @tap="donationsTap" row="0" class="buttons"/>
+            <Button text="Your Requests" @tap="requestsTap" row="1" class="buttons"/>
+            <!-- <ListView for="item in options" @itemTap="onItemTap" class="list" separatorColor="transparent">
                 <v-template>
                     <GridLayout class="listItem">
                     <Label :text="item"/>
                     </GridLayout>
                 </v-template>
-            </ListView>
+            </ListView> -->
         </GridLayout>
     </Page>
 </template>
@@ -55,14 +57,20 @@
             onDrawerButtonTap() {
                 utils.showDrawer();
             },
-            onItemTap(event){
-                if(event.index == 0){
-                    this.$navigateTo(AllDonations);
-                }
-                else if(event.index == 1){
-                    this.$navigateTo(AllRequests);
-                }
+            donationsTap(){
+                this.$navigateTo(AllDonations);
+            },
+            requestsTap(){
+                this.$navigateTo(AllRequests);
             }
+            // onItemTap(event){
+            //     if(event.index == 0){
+            //         this.$navigateTo(AllDonations);
+            //     }
+            //     else if(event.index == 1){
+            //         this.$navigateTo(AllRequests);
+            //     }
+            // }
         }
     };
 </script>
@@ -87,8 +95,21 @@
         height: 170px;
     }
     .list{
-  background-color: white;
-  margin-top: 50px;
-}
+        background-color: white;
+        margin-top: 50px;
+    }
+    .buttons{
+        margin: 50px;
+        background-color: #f87979;
+        height: 170px;
+        text-align: center;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #ea3b3a;
+        border-radius: 30px;
+        color: white;
+        font-weight: bold;
+        font-size: 20em;
+    }
     // Custom styles
 </style>
