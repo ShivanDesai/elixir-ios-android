@@ -78,7 +78,7 @@ export default {
         },
 
         submit() {
-            this.$navigateTo(Home);
+            // this.$navigateTo(Home);
             if (!this.user.email || !this.user.password) {
                 this.alert(
                     "Please provide both an email address and password."
@@ -115,6 +115,9 @@ export default {
                     appSettings.setString("token", result.token);
                     appSettings.setBoolean("loggedin", true);
                     this.$navigateTo(Home);
+                }
+                else{
+                    this.alert("Please input a valid email id and password");
                 }
                 //TODO if successfully logged in, $navigateTo(Home)
 
@@ -205,6 +208,9 @@ export default {
         focusPhone(){
             if (!this.isLoggingIn) {
                 this.$refs.phoneNo.nativeView.focus();
+            }
+            else{
+                this.$refs.password.nativeView.focus();
             }
         },
 
