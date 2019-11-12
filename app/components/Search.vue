@@ -100,7 +100,9 @@
                     // var y = this.locas[i][1];
                     var title = this.allRequests[i].location;
                     var subt = this.allRequests[i].fulfilled_quantity;
-                    
+                    var bg = this.allRequests[i].blood_group;
+                    var bq = this.allRequests[i].blood_quantity;
+                    var rid = this.allRequests[i].id;
                     args.map.addMarkers([
                         {
                             lat: parseFloat(x),
@@ -117,16 +119,16 @@
                                         method: "POST",
                                         headers: { "Content-Type": "application/json" },
                                         content: JSON.stringify({
-                                            blood_group: this.allRequests[i].blood_group, 
-                                            blood_qty: this.allRequests[i].blood_quantity,
+                                            blood_group: bg, 
+                                            blood_qty: bc,
                                             user_id: appSettings.getString("token", "dasdasd"),
                                             donation_date: new Date(),
                                             gender: 'M',
                                             age: '20',
                                             donation_address: 'some addr',
-                                            longitude: this.allRequests[i].longitudes,
-                                            latitude: this.allRequests[i].latitude,
-                                            request_id: this.allRequests[i].id
+                                            longitude: parseFloat(y),
+                                            latitude: parseFloat(x),
+                                            request_id: rid
                                         })
                                     }).then(response => {
                                         var result = response.content.toJSON();
